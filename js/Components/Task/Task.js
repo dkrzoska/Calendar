@@ -5,14 +5,13 @@ import Operations from '../Operations/Operations';
 
 function Task({ title, description ,id }) {
     const [operations, setOperations] = useState([]);
-    const [trash, setTrash] = useState(false);
     const [addoperation, setAddOperation] = useState(false);
 
     const handleaddoperation = () => setAddOperation(true);
 
-    const submitoperation = ev => {
-        ev.preventDefault();
-        setAddOperation (false)
+    const submitoperation = (truefalse) => {
+        // ev.preventDefault();
+        setAddOperation (truefalse)
     };
 
     useEffect(() => {
@@ -46,13 +45,13 @@ function Task({ title, description ,id }) {
                     {/* Przycisk usuwania ma być widoczny tylko
                     jeżeli nie ma żadnych operacji w zadaniu */}
 
-                    {trash && (<button className="btn btn-outline-danger btn-sm ml-2">
+                    {operations.length === 0 && (<button className="btn btn-outline-danger btn-sm ml-2">
                         <i className="fas fa-trash false"></i>
                     </button>)}
                 </div>
             </div>
-            {addoperation && <Operations submitoperation={submitoperation}/>}
-            {operations.map((operation, id) => <Operation key={operation.id} {...operation}/>)}
+            {addoperation && <Operations submitoperation={addoperation, submitoperation}/>}
+            {operations.map((operation) => <Operation key={operation.id} {...operation}/>)}
 
         </section>
     )

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-function Operations() {
+function Operations({submitoperation}) {
 
     return (
         <>
             <div className="card-body">
-                <form >
+                <form onSubmit={() => submitoperation(false)}>
                     <div className="input-group">
                         <input type="text" className="form-control" placeholder="Operation description" />
                         <div className="input-group-append">

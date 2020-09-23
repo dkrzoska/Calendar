@@ -1,14 +1,26 @@
 import React, {useState, useEffect} from 'react'
 
-function NewTask() {
-    const [title, setTitle] = useState();
-    const [description, setDescription] = useState();
+function NewTask({addTask}) {
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
 
-    const handleTtile = () => setTitle(title);
-    const handleDescription = () => setDescription(description);
+    const handleTtile = ev => {
+        setTitle(ev.target.value);
+    }
+
+    const handleDescription = ev => {
+        setDescription(ev.target.value);
+    }
 
     const submitTask = ev => {
         ev.preventDefault();
+        const newtask = {
+            "title": title,
+            "description": description,
+            "status": "open"
+        }
+        console.log(newtask);
+        addTask(newtask);
     }
 
     return (
@@ -18,14 +30,14 @@ function NewTask() {
                 <form onSubmit={submitTask}>
                     <div className="form-group">
                         <input type="text"
-                            value={title} onChange={handleTtile}
+                            onChange={handleTtile} value={title}
                             className="form-control"
                             name="title"
                             placeholder="Title" />
                     </div>
                     <div className="form-group">
                         <input type="text"
-                            value={description} onChange={handleDescription}
+                            onChange={handleDescription} value={description}
                             className="form-control"
                             name="description"
                             placeholder="Description" />
