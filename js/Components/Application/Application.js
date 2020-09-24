@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from "react-dom";
 import Month from "../Month/Month";
 import moment from "moment";
+import '../Application/style.css';
 
 function Application() {
     const [year, setYear] = useState("2020");
@@ -60,15 +61,17 @@ function Application() {
     }
 
     return (
-        <div>
-            <select onChange = {handleChangeYear} id="year" name="year">
+        <>
+            <select onChange={handleChangeYear} id="year" name="year">
                 <option value="2020">2020</option>
                 <option value="2019">2019</option>
                 <option value="2018">2018</option>
                 <option value="2017">2017</option>
             </select>
-            {calendar.map((el, i) => <Month name={el.name} days={el.days} />)}
-        </div>
+            <div>
+                {calendar.map((el, i) => <Month name={el.name} days={el.days} />)}
+            </div>
+        </>
     )
 }
 
