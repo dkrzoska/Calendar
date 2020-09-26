@@ -1,0 +1,30 @@
+.header {
+    display: flex;
+    height: 70px;
+    border: solid 1px;
+}
+
+.logo, .login {
+    line-height: 70px;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    width: 400px;
+    margin: 0 auto;
+    background-color: lightcoral;
+}
+
+.logo {
+    width: 70%;
+    background-color: lightblue;
+}
+
+.login {
+    width: 10%;
+    padding: 0 auto;
+    background-color: lightgreen;
+}

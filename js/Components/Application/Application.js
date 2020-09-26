@@ -2,13 +2,26 @@ import React, { useState } from 'react';
 import ReactDOM from "react-dom";
 import Month from "../Month/Month";
 import moment from "moment";
-import '../Application/style.css';
+import './application.css';
+import Header from '../Header/Header';
+import Tasks from '../Tasks/Tasks';
+import Task from '../Task/Task'
 
 function Application() {
     const [year, setYear] = useState("2020");
+    const [newtask, setNewTask] = useState(true);
 
     const handleChangeYear = (ev) => {
         setYear(ev.target.value);
+    }
+
+    const handleNewTask = () => {
+        setNewTask(true);
+    }
+
+    const handleCloseTask = () => {
+        console.log("udało się");
+        setNewTask(false);
     }
 
     let firstDay = moment().set("year", year);
@@ -27,14 +40,14 @@ function Application() {
         let blanks = [];
         for (let i = 0; i < firstDay.get('d'); i++) {
             blanks.push(
-                <td>{""}</td>
+                <td><div>{""}</div></td>
             );
         }
 
         let daysInMonth = [];
         for (let day = 1; day < firstDay.daysInMonth() + 1; day++) {
-            blanks.push(
-                <td>{day}</td>
+            daysInMonth.push(
+                <td><div onClick = {handleNewTask}>{day}</div></td>
             );
         }
 
@@ -62,14 +75,19 @@ function Application() {
 
     return (
         <>
+            <Header />
             <select onChange={handleChangeYear} id="year" name="year">
                 <option value="2020">2020</option>
                 <option value="2019">2019</option>
                 <option value="2018">2018</option>
                 <option value="2017">2017</option>
             </select>
-            <div>
-                {calendar.map((el, i) => <Month name={el.name} days={el.days} />)}
+            <div className="main">
+                <Tasks closeTask = {handleCloseTask} />
+                {newtask === true ? <Task /> :
+                <div className="calendar">
+                    {calendar.map((el, i) => <Month id = {i} name={el.name} days={el.days} />)}
+                </div>}
             </div>
         </>
     )

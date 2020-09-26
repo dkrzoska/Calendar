@@ -1,0 +1,22 @@
+.task__form {
+    width: 500px;
+    padding: 0 100px;
+    /* position: absolute; */
+    margin: 0 auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+
+form .task__title, form label {
+    line-height: 40px;
+}
+
+form button {
+    width: 100px;
+    height: 50px;
+    margin: 20px auto;
+}
