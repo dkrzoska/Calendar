@@ -1,9 +1,31 @@
+.task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.1);
+}
+
 .task__form {
     width: 500px;
     padding: 0 100px;
     /* position: absolute; */
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    /* top: calc(100vh - 600px); */
+    /* left: calc(50vw - 250px); */
+    background-color: white;
 }
+
+/* .task__form::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.1);
+} */
 
 form {
     display: flex;

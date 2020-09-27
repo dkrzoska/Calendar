@@ -24,7 +24,9 @@
 }
 
 .login {
+    display: flex;
+    justify-content: center;
     width: 10%;
-    padding: 0 auto;
     background-color: lightgreen;
+    cursor: pointer;
 }

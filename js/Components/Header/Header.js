@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './header.css'
 
-function Header() {
+function Header({ displaylogin }) {
+    const [login, setLogin] = useState("Login");
+
     return (
-        <div className = "header">
-            <p className = "logo">Logo</p>
-            <ul className = "menu">
+        <div className="header">
+            <p className="logo">Logo</p>
+            <ul className="menu">
                 <li>lorem</li>
                 <li>lorem</li>
                 <li>lorem</li>
             </ul>
-            <p className = "login">LogIn</p>
+            <p onClick={() => displaylogin()} className="login">{login}</p>
         </div>
     )
 }

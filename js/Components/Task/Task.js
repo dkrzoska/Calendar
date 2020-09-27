@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import moment from 'moment';
 import './task.css'
 
-function Task({ closeTask = () => { } }) {
+function Task({ closeTask }) {
     const [year, setYear] = useState('');
     const [month, setMonth] = useState('');
     const [day, setDay] = useState('');
@@ -11,6 +11,10 @@ function Task({ closeTask = () => { } }) {
 
     let begin = moment().set("year", year).startOf('year');
     let months = [];
+
+    // props.closeTask();
+    // console.log(closeTask);
+
     for (let i = 0; i < 11; i++) {
         i === 0 && months.push(begin.format("MMMM"));
         months.push(begin.add(1, 'M').format("MMMM"));
@@ -42,34 +46,36 @@ function Task({ closeTask = () => { } }) {
     }
 
     return (
-        <div className='task__form'>
-            <form onSubmit={() => closeTask(false), ev => ev.preventDefault()}>
-                <p className="task__title"><strong>New Task</strong></p>
-                <label><strong>Title</strong></label>
-                <input onChange={handleSetTitle} type='text' placeholder='Title' name="title" />
-                <label><strong>Description</strong></label>
-                <textarea rows = {5} onChange={handleSetDescription} placeholder='Description' name='description' />
-                <label><strong>Date</strong></label>
-                <div>
-                    <select onChange={handleSetYear}>
-                        {/* <option selected='selected' value='year'>Year</option> */}
-                        <option value='2022'>2022</option>
-                        <option value='2021'>2021</option>
-                        <option value='2020'>2020</option>
-                        <option value='2019'>2019</option>
-                        <option value='2018'>2018</option>
-                    </select>
-                    <select onChange={handleSetMonth}>
-                        {/* <option selected='selected' value='month'>Month</option> */}
-                        {months.map((el, i) => <option value={i}>{el}</option>)}
-                    </select>
-                    <select onChange={handleSetDay}>
-                        {/* <option selected='selected' value='day'>Day</option> */}
-                        {days.map(el => <option value={el}>{el}</option>)}
-                    </select>
-                </div>
-                <button onClick={() => closeTask(false)}>Dodaj</button>
-            </form>
+        <div className="task">
+            <div className='task__form'>
+                <form onSubmit={(e) => closeTask(e)}>
+                    <p className="task__title"><strong>New Task</strong></p>
+                    <label><strong>Title</strong></label>
+                    <input onChange={handleSetTitle} type='text' placeholder='Title' name="title" />
+                    <label><strong>Description</strong></label>
+                    <textarea rows={5} onChange={handleSetDescription} placeholder='Description' name='description' />
+                    <label><strong>Date</strong></label>
+                    <div>
+                        <select onChange={handleSetYear}>
+                            {/* <option selected='selected' value='year'>Year</option> */}
+                            <option value='2022'>2022</option>
+                            <option value='2021'>2021</option>
+                            <option value='2020'>2020</option>
+                            <option value='2019'>2019</option>
+                            <option value='2018'>2018</option>
+                        </select>
+                        <select onChange={handleSetMonth}>
+                            {/* <option selected='selected' value='month'>Month</option> */}
+                            {months.map((el, i) => <option value={i}>{el}</option>)}
+                        </select>
+                        <select onChange={handleSetDay}>
+                            {/* <option selected='selected' value='day'>Day</option> */}
+                            {days.map(el => <option value={el}>{el}</option>)}
+                        </select>
+                    </div>
+                    <button type='submit'>Dodaj</button>
+                </form>
+            </div>
         </div>
     )
 }
