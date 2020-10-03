@@ -18,6 +18,11 @@
     background-color: white;
 }
 
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
 /* .task__form::after {
     content: "";
     display: block;

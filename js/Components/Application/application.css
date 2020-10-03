@@ -10,6 +10,7 @@
 
 .main {
     display: flex;
+    height: 440px;
 }
 
 .calendar {
@@ -19,6 +20,7 @@
 }
 
 table {
+    /* height: 180px; */
     margin: 20px;
 }
 
@@ -28,6 +30,10 @@ table div {
     border-radius: 50%;
     cursor: pointer;
     margin: 3px;
+}
+
+.thereistasks {
+    background-color: lightgreen;
 }
 
 table div:hover {
