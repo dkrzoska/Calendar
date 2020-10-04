@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from "react-dom";
-import Month from "../Month/Month";
-import moment from "moment";
 import './application.css';
+import moment from "moment";
+import {getTasks} from '../../api/task/fetchTask';
+import Month from "../Month/Month";
 import Header from '../Header/Header';
 import Tasks from '../Tasks/Tasks';
 import Task from '../Task/Task';
@@ -27,19 +28,8 @@ function Application() {
     let thisdate = `${thisyear}-${thismonth}-${thisday}`;
 
     useEffect(() => {
-        fetchAllTasks();
+        fetchAllTasks(setTasks);
     }, []);
-
-    // const fetchAllTasks = () => {
-    //     fetch('http://localhost:3000/tasks')
-    //         .then(resp => resp.json())
-    //         .then(alltasks => {
-    //             if (alltasks.error === false && typeof setTasks === "function") {
-    //                 setTasks(alltasks);
-    //             }
-    //         })
-    //         .catch(err => console.log(err));
-    // }
 
     const fetchAllTasks = () => {
         fetch('http://localhost:3000/tasks')
@@ -77,9 +67,7 @@ function Application() {
         let currentTask = tasks.filter(el => {
             return el.id === id
         })[0];
-        // console.log(currentTask.title);
         setCurrentId(currentTask.id);
-        console.log(currentId);
         setCurrentTitle(currentTask.title);
         setCurrentDescription(currentTask.description);
         showModify(true);
@@ -90,9 +78,7 @@ function Application() {
         setYear(ev.target.value);
     }
 
-    const handleNewTask = ev => {
-        // setCurrentDay(ev.target.dataset.day);
-        // setCurrentMonth(ev.target.dataset.month);
+    const handleNewTask = () => {
         showNewTask(true);
     }
 
@@ -107,8 +93,6 @@ function Application() {
 
     const handleCloseTask = ev => {
         ev.preventDefault();
-        // console.log(ev);
-        // console.log("udało się");
         showNewTask(false);
         showModify(false);
     }
@@ -120,9 +104,6 @@ function Application() {
     let firstDay = moment().set("year", year);
 
     firstDay = firstDay.startOf('year'); //ustawienie początku daty
-    // firstDay = firstDay.add(1, 'M'); //dodanie dwóch miesięcy, miesiąc != konkretniej liczbie dni, tylko zmiana miesiąca
-    // console.log(firstDay.get('d')); //pozycja pierwszego dnia wg dnia tygodnia niedziela = 0
-    // console.log(firstDay.daysInMonth());
 
     let calendar = [];
 
@@ -177,7 +158,7 @@ function Application() {
     // }
 
     return (
-        <>
+        <div className="container">
             {/* {login === true && <Login displaylogin={handleShowLogin} />} */}
             {/* {newtask && <Task closeTask={handleCloseTask} currentmonth = {currentmonth} currentday = {currentday} currentyear = {year}/>} */}
             {newtask && <Task
@@ -215,7 +196,7 @@ function Application() {
                     {calendar.map((el, i) => <Month key={i} name={el.name} days={el.days} />)}
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

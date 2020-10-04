@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import './header.css'
+import './header.css';
 
 function Header({ displaylogin }) {
     const [login, setLogin] = useState("Login");
 
     return (
         <div className="header">
-            <p className="logo">Logo</p>
+            <div className="logo"><img src={'../../../media/calendar--v2.png'} /></div>
             <ul className="menu">
                 <li>lorem</li>
                 <li>lorem</li>

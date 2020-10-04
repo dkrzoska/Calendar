@@ -8,6 +8,10 @@
     line-height: 70px;
 }
 
+.logo img {
+    height: 100%;
+}
+
 .menu {
     display: flex;
     justify-content: space-around;

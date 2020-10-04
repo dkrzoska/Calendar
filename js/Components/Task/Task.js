@@ -11,8 +11,6 @@ function Task({ closeTask, fetchaddTask, fetcheditTask, currentmonth, currentday
     const [title, setTitle] = useState(currenttitle);
     const [description, setDescription] = useState(currentdescription);
 
-    // console.log(currenttitle);
-
     let begin = moment().set("year", year).startOf('year');
     let months = [];
 
@@ -71,14 +69,8 @@ function Task({ closeTask, fetchaddTask, fetcheditTask, currentmonth, currentday
             "date": year + '-' + moment(moment().set('month', month)).format("MM") + '-' + moment(moment().set('date', day)).format("DD"),
             "time": moment(moment().set('hour', hour)).format('HH') + ':' + moment(moment().set('minute', minute)).format('mm'),
             "title": title,
-            "description": description,
-            "year": year,
-            "month": month,
-            "day": day,
-            "hour": hour,
-            "minute": minute
+            "description": description
         }
-        // console.log(newtask);
         fetchaddTask(newtask);
         closeTask(ev);
     }
@@ -89,12 +81,7 @@ function Task({ closeTask, fetchaddTask, fetcheditTask, currentmonth, currentday
             "date": year + '-' + moment(moment().set('month', month)).format("MM") + '-' + moment(moment().set('date', day)).format("DD"),
             "time": moment(moment().set('hour', hour)).format('HH') + ':' + moment(moment().set('minute', minute)).format('mm'),
             "title": title,
-            "description": description,
-            "year": year,
-            "month": month,
-            "day": day,
-            "hour": hour,
-            "minute": minute
+            "description": description
         }
         console.log(id);
         fetcheditTask(newtask, id);

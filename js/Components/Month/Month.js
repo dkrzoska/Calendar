@@ -1,8 +1,9 @@
 import React from 'react';
+import './month.css';
 
 function Month({ name, days }) {
     return (
-        <table style={{ "border": "solid 1px", "display": "inline-block" }}>
+        <table className = 'month'>
             <thead>
                 <tr>
                     <th colSpan={7}>{name}</th>
