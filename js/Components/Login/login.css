@@ -1,0 +1,21 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: var(--bw);
+    background-color: rgba(0,0,0,0.1);
+}
+
+.login form {
+    display: flex;
+    /* align-items: center; */
+    width: 200px;
+    padding: 30px 50px 0px 50px;
+    /* position: absolute; */
+    /* margin: 0 auto; */
+    /* top: calc(100vh - 600px); */
+    /* left: calc(50vw - 250px); */
+    background-color: white;
+}

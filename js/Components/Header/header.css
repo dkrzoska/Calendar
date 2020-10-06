@@ -4,7 +4,7 @@
     border: solid 1px;
 }
 
-.logo, .login {
+.logo, .header__login {
     line-height: 70px;
 }
 
@@ -27,7 +27,7 @@
     background-color: lightblue;
 }
 
-.login {
+.header__login {
     display: flex;
     justify-content: center;
     width: 10%;

@@ -1,19 +1,18 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
+import './login.css';
 
-function Login() {
-    const [name, setName] = useState('username');
+function Login({ handleSetLogin }) {
+    const [username, setUsername] = useState('');
 
-    const handleSetName = (ev) => {
-        ev.preventDefault();
-        setName(ev.target.value);
-        window.localStorage.setItem('user', JSON.stringify(name));
+    const handleSetUserName = ev => {
+        setUsername(ev.target.value);
     }
 
     return (
-        <div>
-            <form onSubmit = {handleSetName}>
-                <input value = {name} type = 'text' placeholder = 'username'/>
-                <button>Submit</button>
+        <div className="login">
+            <form onSubmit={ev => handleSetLogin(ev, username)}>
+                <input onChange={handleSetUserName} value={username} type='text' placeholder='username' />
+                <button type='submit'>Login</button>
             </form>
         </div>
     )

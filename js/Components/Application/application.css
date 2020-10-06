@@ -4,8 +4,20 @@
     padding: 0;
 }
 
+body {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 :root {
     --wc: 85%;
+    --bw: 1200px;
+}
+
+.container {
+    background-color: #fff;
+    height: 720px;
+    width: var(--bw);
+    margin: 0 auto;
 }
 
 .main {

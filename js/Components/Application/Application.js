@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from "react-dom";
 import './application.css';
 import moment from "moment";
-import {getTasks} from '../../api/task/fetchTask';
+import { getTasks } from '../../api/task/fetchTask';
 import Month from "../Month/Month";
 import Header from '../Header/Header';
 import Tasks from '../Tasks/Tasks';
@@ -13,7 +13,6 @@ function Application() {
     const [year, setYear] = useState("2020");
     const [newtask, showNewTask] = useState(false);
     const [showtasks, setShowTasks] = useState(false);
-    const [login, showLogin] = useState(false);
     const [currentday, setCurrentDay] = useState(1);
     const [currentmonth, setCurrentMonth] = useState(0);
     const [currenttitle, setCurrentTitle] = useState();
@@ -97,10 +96,6 @@ function Application() {
         showModify(false);
     }
 
-    const handleShowLogin = () => {
-        showLogin(true);
-    }
-
     let firstDay = moment().set("year", year);
 
     firstDay = firstDay.startOf('year'); //ustawienie początku daty
@@ -173,7 +168,7 @@ function Application() {
                 modify={modify}
                 id={currentId}
             />}
-            <Header showLogin={handleShowLogin} />
+            <Header />
             <select defaultValue={year} onChange={handleChangeYear} id="year" name="year">
                 <option value="2022">2022</option>
                 <option value="2021">2021</option>

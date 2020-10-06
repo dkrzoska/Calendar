@@ -1,8 +1,20 @@
 import React, { useState } from 'react';
+import Login from '../Login/Login';
 import './header.css';
 
-function Header({ displaylogin }) {
-    const [login, setLogin] = useState("Login");
+function Header() {
+    const [loginscreen, showLoginScreen] = useState(false);
+    const [login, setLogin] = useState('Login');
+
+    const handleSetLogin = (ev, name) => {
+        ev.preventDefault();
+        name != '' ? setLogin(name) : setLogin('Login');
+        showLoginScreen(false);
+    }
+
+    const handleShowLoginScreen = () => {
+        showLoginScreen(true);
+    }
 
     return (
         <div className="header">
@@ -12,7 +24,8 @@ function Header({ displaylogin }) {
                 <li>lorem</li>
                 <li>lorem</li>
             </ul>
-            <p onClick={() => displaylogin()} className="login">{login}</p>
+            <p onClick={() => handleShowLoginScreen()} className="header__login">{login}</p>
+            {loginscreen && <Login handleSetLogin={handleSetLogin}/>}
         </div>
     )
 }
