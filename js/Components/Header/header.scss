@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    border: solid blue 2px;
+    background-color: lightskyblue;
+    &__logo {
+        margin-left: 20px;
+        width: 150px;
+        img {
+            height: 100%;
+        }
+    }
+    &__menu {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
+        width: 150px;
+        /* margin: 0 auto; */
+        background-color: lightcoral;
+        border: solid red 1px;
+        border-radius: 35px;
+        margin: 10px;
+        &__showall {
+            cursor: pointer;
+        }
+    }
+    &__login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        background-color: lightgreen;
+        cursor: pointer;
+        border: solid 1px green;
+        border-radius: 35px;
+        margin: 10px 20px 10px 0;
+    }
+}

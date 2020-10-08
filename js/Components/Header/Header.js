@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Login from '../Login/Login';
-import './header.css';
+import './header.scss';
 
 function Header() {
     const [loginscreen, showLoginScreen] = useState(false);
@@ -18,13 +18,11 @@ function Header() {
 
     return (
         <div className="header">
-            <div className="logo"><img src={'../../../media/calendar--v2.png'} /></div>
-            <ul className="menu">
-                <li>lorem</li>
-                <li>lorem</li>
-                <li>lorem</li>
+            <div className="header__logo"><img src={'../../../media/calendar.png'} /></div>
+            <ul className="header__menu">
+                <li className="header__menu__showall"><strong>Show all tasks</strong></li>
             </ul>
-            <p onClick={() => handleShowLoginScreen()} className="header__login">{login}</p>
+            <strong onClick={() => handleShowLoginScreen()} className="header__login">{login}</strong>
             {loginscreen && <Login handleSetLogin={handleSetLogin}/>}
         </div>
     )

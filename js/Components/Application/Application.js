@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from "react-dom";
-import './application.css';
+import './application.scss';
 import moment from "moment";
 import { getTasks } from '../../api/task/fetchTask';
 import Month from "../Month/Month";
@@ -12,7 +12,7 @@ import Login from '../Login/Login';
 function Application() {
     const [year, setYear] = useState("2020");
     const [newtask, showNewTask] = useState(false);
-    const [showtasks, setShowTasks] = useState(false);
+    // const [showtasks, setShowTasks] = useState(false);
     const [currentday, setCurrentDay] = useState(1);
     const [currentmonth, setCurrentMonth] = useState(0);
     const [currenttitle, setCurrentTitle] = useState();
@@ -87,7 +87,7 @@ function Application() {
         setCurrentMonth(ev.target.dataset.month);
         setCurrentTitle('');
         setCurrentDescription('');
-        setShowTasks(true);
+        // setShowTasks(true);
     }
 
     const handleCloseTask = ev => {
@@ -169,7 +169,7 @@ function Application() {
                 id={currentId}
             />}
             <Header />
-            <select defaultValue={year} onChange={handleChangeYear} id="year" name="year">
+            <select className="select__year" defaultValue={year} onChange={handleChangeYear} id="year" name="year">
                 <option value="2022">2022</option>
                 <option value="2021">2021</option>
                 <option value="2020">2020</option>
@@ -178,15 +178,13 @@ function Application() {
             </select>
             <div className="main">
                 {/* {tasks.map(el => <div>{el.date}</div>)} */}
-                <div className="tasks">
-                    {showtasks && <Tasks
-                        newTask={handleNewTask}
-                        thisdate={thisdate}
-                        tasks={tasks}
-                        fetchdeleteTask={fetchdeleteTask}
-                        editTask={editTask}
-                    />}
-                </div>
+                <Tasks
+                    newTask={handleNewTask}
+                    thisdate={thisdate}
+                    tasks={tasks}
+                    fetchdeleteTask={fetchdeleteTask}
+                    editTask={editTask}
+                />
                 <div className="calendar">
                     {calendar.map((el, i) => <Month key={i} name={el.name} days={el.days} />)}
                 </div>

@@ -1,0 +1,40 @@
+.task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: var(--bw);
+    background-color: rgba(0,0,0,0.1);
+    &__form {
+        width: 500px;
+        padding: 0 100px;
+        /* position: absolute; */
+        /* margin: 0 auto; */
+        /* top: calc(100vh - 600px); */
+        /* left: calc(50vw - 250px); */
+        background-color: white;
+    }
+    .buttons {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        line-height: 40px;
+        /* align-items: center; */
+    }
+
+    .task__title, form label {
+        line-height: 40px;
+    }
+
+    form button {
+        width: 100px;
+        height: 50px;
+        margin: 20px auto;
+    }
+}
+

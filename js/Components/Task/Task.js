@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-import './task.css'
+import './task.scss'
 
 function Task({ closeTask, fetchaddTask, fetcheditTask, currentmonth, currentday, currentyear, currenttitle, currentdescription, modify, id }) {
     const [year, setYear] = useState(currentyear);

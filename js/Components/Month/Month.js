@@ -1,5 +1,5 @@
 import React from 'react';
-import './month.css';
+import './month.scss';
 
 function Month({ name, days }) {
     return (
