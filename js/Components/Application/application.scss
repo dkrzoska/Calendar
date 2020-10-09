@@ -12,11 +12,12 @@ body {
 :root {
     --wc: 78%;
     --bw: 1200px;
+    --bh: 780px;
 }
 
 .container {
     background-color: #fff;
-    height: 720px;
+    height: var(--bh);
     width: var(--bw);
     margin: 0 auto;
 }

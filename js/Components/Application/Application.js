@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from "react-dom";
 import './application.scss';
 import moment from "moment";
 import { getTasks } from '../../api/task/fetchTask';
@@ -7,12 +6,13 @@ import Month from "../Month/Month";
 import Header from '../Header/Header';
 import Tasks from '../Tasks/Tasks';
 import Task from '../Task/Task';
-import Login from '../Login/Login';
 
 function Application() {
     const [year, setYear] = useState("2020");
     const [newtask, showNewTask] = useState(false);
-    // const [showtasks, setShowTasks] = useState(false);
+    const [showtasks, setShowTasks] = useState(false);
+    const [currentminute, setCurrentMinute] = useState(0);
+    const [currenthour, setCurrentHour] = useState(0);
     const [currentday, setCurrentDay] = useState(1);
     const [currentmonth, setCurrentMonth] = useState(0);
     const [currenttitle, setCurrentTitle] = useState();
@@ -69,8 +69,15 @@ function Application() {
         setCurrentId(currentTask.id);
         setCurrentTitle(currentTask.title);
         setCurrentDescription(currentTask.description);
+        setYear(moment(currentTask.date).format('YYYY'));
+        // setCurrentMonth(moment().set('month',moment(currentTask.date).format('MM') - 1).format('MMMM'));
+        setCurrentMonth(moment(currentTask.date).format('M') - 1);
+        setCurrentDay(moment(currentTask.date).format('DD'));
+        setCurrentHour(moment(`${currentTask.date}T${currentTask.time}`).format('HH'));
+        setCurrentMinute(moment(`${currentTask.date}T${currentTask.time}`).format('mm'));
         showModify(true);
         showNewTask(true);
+        setShowThisDate(false);
     }
 
     const handleChangeYear = (ev) => {
@@ -82,18 +89,22 @@ function Application() {
     }
 
     const handleShowTasks = ev => {
-        ev.preventDefault;
+        ev.preventDefault();
         setCurrentDay(ev.target.dataset.day);
         setCurrentMonth(ev.target.dataset.month);
         setCurrentTitle('');
         setCurrentDescription('');
-        // setShowTasks(true);
+        setShowTasks(true);
     }
 
     const handleCloseTask = ev => {
         ev.preventDefault();
         showNewTask(false);
         showModify(false);
+    }
+
+    const handleShowAllTasks = ev => {
+        setShowTasks(false);
     }
 
     let firstDay = moment().set("year", year);
@@ -160,15 +171,17 @@ function Application() {
                 fetchaddTask={fetchaddTask}
                 fetcheditTask={fetcheditTask}
                 closeTask={handleCloseTask}
-                currentmonth={currentmonth}
+                currentminute={currentminute}
+                currenthour={currenthour}
                 currentday={currentday}
+                currentmonth={currentmonth}
                 currentyear={year}
                 currenttitle={currenttitle}
                 currentdescription={currentdescription}
                 modify={modify}
                 id={currentId}
             />}
-            <Header />
+            <Header handleShowAllTasks={handleShowAllTasks} />
             <select className="select__year" defaultValue={year} onChange={handleChangeYear} id="year" name="year">
                 <option value="2022">2022</option>
                 <option value="2021">2021</option>
@@ -184,6 +197,7 @@ function Application() {
                     tasks={tasks}
                     fetchdeleteTask={fetchdeleteTask}
                     editTask={editTask}
+                    showtasks={showtasks}
                 />
                 <div className="calendar">
                     {calendar.map((el, i) => <Month key={i} name={el.name} days={el.days} />)}

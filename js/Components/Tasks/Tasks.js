@@ -3,7 +3,7 @@ import './tasks.scss';
 import moment from 'moment';
 import SingleTask from '../SingleTask/SingleTask';
 
-function Tasks({ newTask, fetchdeleteTask, editTask, thisdate, tasks }) {
+function Tasks({ newTask, fetchdeleteTask, editTask, thisdate, tasks, showtasks }) {
 
     if (!tasks) {
         return 'Loading...';
@@ -16,7 +16,11 @@ function Tasks({ newTask, fetchdeleteTask, editTask, thisdate, tasks }) {
                 <button onClick={ev => newTask(ev)}>Dodaj zadanie</button>
             </div>
             <div className="tasks__main">
-                {tasks.filter(el => el.date === thisdate).map((el, i) => <SingleTask fetchdeleteTask={fetchdeleteTask} editTask={editTask} key={i} {...el} />)}
+                {showtasks === false && tasks.sort((el1, el2) => {
+                    // console.log(moment().set('month',moment(`${el1.date}T${el1.time}`).format('M')).format('MMMM'));
+                    return moment(`${el1.date}T${el1.time}`).format('YYYYMMDDHHmm') - moment(`${el2.date}T${el2.time}`).format('YYYYMMDDHHmm')
+                }).map((el, i) => <SingleTask fetchdeleteTask={fetchdeleteTask} editTask={editTask} key={i} {...el} />)}
+                {showtasks === true && tasks.filter(el => el.date === thisdate).map((el, i) => <SingleTask fetchdeleteTask={fetchdeleteTask} editTask={editTask} key={i} {...el} />)}
             </div>
         </div>
     )

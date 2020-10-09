@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import './task.scss'
 
-function Task({ closeTask, fetchaddTask, fetcheditTask, currentmonth, currentday, currentyear, currenttitle, currentdescription, modify, id }) {
+function Task({ closeTask, fetchaddTask, fetcheditTask, currentmonth, currentday, currentyear, currenttitle, currentdescription, currenthour, currentminute, modify, id }) {
     const [year, setYear] = useState(currentyear);
     const [month, setMonth] = useState(currentmonth);
     const [day, setDay] = useState(currentday);
-    const [hour, setHour] = useState('');
-    const [minute, setMinute] = useState('');
+    const [hour, setHour] = useState(currenthour);
+    const [minute, setMinute] = useState(currentminute);
     const [title, setTitle] = useState(currenttitle);
     const [description, setDescription] = useState(currentdescription);
 

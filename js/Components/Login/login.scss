@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    height: 100%;
+    height: var(--bh);
     width: var(--bw);
     background-color: rgba(0,0,0,0.1);
     form {
@@ -20,5 +20,6 @@
         padding: 5px;
         margin-top: 20px;
         font-weight: 700;
+        cursor: pointer;
     }
 }
