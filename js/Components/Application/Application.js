@@ -94,6 +94,8 @@ function Application() {
         setCurrentMonth(ev.target.dataset.month);
         setCurrentTitle('');
         setCurrentDescription('');
+        setCurrentHour('00');
+        setCurrentMinute('00');
         setShowTasks(true);
     }
 
@@ -182,7 +184,7 @@ function Application() {
                 id={currentId}
             />}
             <Header handleShowAllTasks={handleShowAllTasks} />
-            <select className="select__year" defaultValue={year} onChange={handleChangeYear} id="year" name="year">
+            <select className="select__year" value={year} onChange={handleChangeYear} id="year" name="year">
                 <option value="2022">2022</option>
                 <option value="2021">2021</option>
                 <option value="2020">2020</option>
