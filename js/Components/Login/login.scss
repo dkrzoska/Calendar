@@ -1,0 +1,25 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: var(--bh);
+    width: var(--bw);
+    background-color: rgba(0,0,0,0.1);
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 200px;
+        padding: 20px 30px 20px 30px;
+        background-color: white;
+        border-radius: 10px;
+    }
+    button {
+        border-radius: 5px;
+        padding: 5px;
+        margin-top: 20px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+}

@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ToDoList from "./Components/ToDoList/ToDoList";
+import Application from "./Components/Application/Application";
 
 function App() {
-  return <ToDoList />
+  return <Application />
 }
 
 ReactDOM.render(<App/>, document.querySelector("#app"));

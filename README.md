@@ -1,1 +1,1 @@
-# Projekt końcowy na gałęzi "develop"
+# Projekt na zaliczenie HTML, CSS i JavaScript

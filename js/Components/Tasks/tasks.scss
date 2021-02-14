@@ -1,0 +1,19 @@
+.tasks {
+    &__main {
+        height: 520px;
+        overflow-y: scroll;
+        border: solid 1px;
+    }
+    &__addtask {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    button {
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+}
