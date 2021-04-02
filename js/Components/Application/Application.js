@@ -8,6 +8,8 @@ import Tasks from '../Tasks/Tasks';
 import Task from '../Task/Task';
 
 function Application() {
+    const API_KEY = '$2b$10$Tz8oN.ipZC7IGJj4fzeXEOtE/DXhehIUbxEo1/Alr7PgbuoA4uSlG';
+    const url = 'https://api.jsonbin.io/b/6067049f9fc4de52061c2fbf';
     const [year, setYear] = useState("2020");
     const [newtask, showNewTask] = useState(false);
     const [showtasks, setShowTasks] = useState(false);
@@ -31,34 +33,47 @@ function Application() {
     }, []);
 
     const fetchAllTasks = () => {
-        fetch('http://localhost:3000/tasks')
+        fetch(url, {
+            headers: {
+                'Content-Type': 'application/json',
+                'secret-key': API_KEY,
+            },
+            method: 'GET'
+        })
             .then(resp => resp.json())
-            .then(alltasks => setTasks(alltasks));
+            .then(resp => resp.tasks)
+            .then(alltasks => setTasks(alltasks))
     }
 
     const fetchaddTask = (newtask) => {
-        fetch(`http://localhost:3000/tasks/`, {
+        fetch(url, {
             method: "POST",
             body: JSON.stringify(newtask),
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'secret-key': API_KEY,
             }
         }).then(fetchAllTasks)
     }
 
     const fetcheditTask = (newtask, id) => {
-        fetch(`http://localhost:3000/tasks/${id}`, {
+        fetch(`${url}/${id}`, {
             method: "PUT",
             body: JSON.stringify(newtask),
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'secret-key': API_KEY,
             }
         }).then(fetchAllTasks)
     }
 
     const fetchdeleteTask = (id) => {
-        fetch(`http://localhost:3000/tasks/${id}`, {
-            method: "DELETE"
+        fetch(`${url}/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                'secret-key': API_KEY,
+            }
         }).then(fetchAllTasks)
     }
 
